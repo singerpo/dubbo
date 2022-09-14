@@ -11,6 +11,11 @@
 
     <artifactId>dubbo.provider</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>com.sing</groupId>
+            <artifactId>dubbo.interface</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <!--Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,6 +61,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-x-discovery</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>3.4.14</version>
@@ -71,13 +81,15 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

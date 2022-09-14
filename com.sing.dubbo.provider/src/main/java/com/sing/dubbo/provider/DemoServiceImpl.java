@@ -1,5 +1,6 @@
 package com.sing.dubbo.provider;
 
+import com.sing.dubbo.IDemoService;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
@@ -9,6 +10,6 @@ public class DemoServiceImpl implements IDemoService {
     @Override
     public String sayHello(String name) {
         System.out.println("Hello " + name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return "Hello " + name;
+         return "Hello " + name;
     }
 }
