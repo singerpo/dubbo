@@ -18,6 +18,5 @@ public class MainController {
     @RequestMapping("say")
     public String say(){
         return demoService.sayHello("consumer success");
-
     }
 }
