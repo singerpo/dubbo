@@ -19,3 +19,8 @@ weixin:
   appId: wx7b5cacf87cddb94f
   appsecret: 91a30fcffdc8bcf2a210f3f42dc67189
   token: sing1edsawf
+  domain: http://rjc78r.natappfree.cc
+
+spring:
+  thymeleaf:
+    cache: false

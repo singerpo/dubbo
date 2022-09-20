@@ -15,6 +15,8 @@ public class WxConfig {
     private String appsecret;
     @Value("${weixin.token}")
     private String token;
+    @Value("${weixin.domain}")
+    private String domain;
 
     public String getAppId() {
         return appId;
@@ -38,5 +40,13 @@ public class WxConfig {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 }

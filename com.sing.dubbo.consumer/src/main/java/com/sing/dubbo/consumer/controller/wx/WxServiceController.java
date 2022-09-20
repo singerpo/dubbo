@@ -27,6 +27,8 @@ import java.io.OutputStream;
 import java.util.Map;
 
 /**
+ * 创建菜单
+ * 校验token同时回复消息
  * @author songbo
  * @since 2022-09-16
  */
@@ -38,6 +40,7 @@ public class WxServiceController {
     private static ExpireKey expireKey = new DefaultExpireKey();
     @Autowired
     WxConfig wxConfig;
+
 
     @RequestMapping("createMenu")
     public BaseResult createMenu() {
@@ -86,19 +89,21 @@ public class WxServiceController {
         InputStream inputStream = request.getInputStream();
         if (inputStream != null) {
             EventMessage eventMessage = XMLConverUtil.convertToObject(EventMessage.class, inputStream);
-            String key = eventMessage.getFromUserName() + "_" + eventMessage.getToUserName() + "_" +
-                    eventMessage.getMsgId() + "_" + eventMessage.getCreateTime();
-            LOGGER.info("eventMessage:{}",key);
-            if(expireKey.exists(key)){
-                LOGGER.info("通知重复不做处理");
-            }else{
-                expireKey.add(key);
+            if (eventMessage != null) {
+                String key = eventMessage.getFromUserName() + "_" + eventMessage.getToUserName() + "_" +
+                        eventMessage.getMsgId() + "_" + eventMessage.getCreateTime();
+                LOGGER.info("eventMessage:{},eventKey:{},content:{}", key, eventMessage.getEventKey(), eventMessage.getContent());
+                if (expireKey.exists(key)) {
+                    LOGGER.info("通知重复不做处理");
+                } else {
+                    expireKey.add(key);
+                }
+                OutputStream outputStream = response.getOutputStream();
+                String content = "Hi,reply eventMessage";
+                XMLMessage xmlMessage = new XMLTextMessage(eventMessage.getFromUserName(), eventMessage.getToUserName(), content);
+                xmlMessage.outputStreamWrite(outputStream);
+                return null;
             }
-            OutputStream outputStream = response.getOutputStream();
-            String content = "Hi,reply eventMessage";
-            XMLMessage xmlMessage = new XMLTextMessage(eventMessage.getFromUserName(),eventMessage.getToUserName(),content);
-            xmlMessage.outputStreamWrite(outputStream);
-            return null;
         }
 
         return echostr;
