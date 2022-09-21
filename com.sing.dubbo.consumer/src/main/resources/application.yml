@@ -8,10 +8,15 @@ dubbo:
   registry:
     id: zk-registry
     address: zookeeper://127.0.0.1:2181
+    #关闭注册中心检查
+    check: false
   config-center:
     address: zookeeper://127.0.0.1:2181
   metadata-report:
     address: zookeeper://127.0.0.1:2181
+  #关闭注册consumer的依赖检查
+  consumer:
+    check: false
 server:
   port: 8081
 
@@ -24,3 +29,24 @@ weixin:
 spring:
   thymeleaf:
     cache: false
+
+swagger:
+  ui-config:
+    submit-methods: get,post
+  exclude-path: /error
+  title: api
+  description: 好用的api
+  version: 1.0.0
+  #base-package:
+  docket:
+    wx:
+      title: 微信相关
+      base-package: com.sing.dubbo.consumer.controller.wx
+    rest:
+      title: rest
+      base-package: com.sing.dubbo.consumer.controller.rest
+
+
+springfox:
+  documentation:
+    enabled: true
