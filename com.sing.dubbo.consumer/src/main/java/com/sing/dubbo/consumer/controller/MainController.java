@@ -1,6 +1,6 @@
 package com.sing.dubbo.consumer.controller;
 
-import com.sing.dubbo.IDemoService;
+import com.sing.dubbo.api.DemoApi;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/main")
 public class MainController {
     @DubboReference
-    IDemoService demoService;
+    DemoApi demoService;
 
     @RequestMapping("say")
     public String say(){
