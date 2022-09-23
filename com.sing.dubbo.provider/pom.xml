@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.sing</groupId>
-            <artifactId>dubbo.interface</artifactId>
+            <artifactId>dubbo.api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

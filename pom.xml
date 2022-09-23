@@ -6,7 +6,7 @@
     <modules>
         <module>com.sing.dubbo.provider</module>
         <module>com.sing.dubbo.consumer</module>
-        <module>com.sing.dubbo.interface</module>
+        <module>com.sing.dubbo.api</module>
     </modules>
     <groupId>com.sing</groupId>
     <artifactId>dubbo</artifactId>
