@@ -17,7 +17,7 @@ import org.apache.dubbo.rpc.RpcContext;
  * 1.threads:服务线程池大小
  * 2.excutes:一个服务提供者并行执行请求上限
  */
-@DubboService(loadbalance="roundrobin")
+@DubboService
 //(version = "1.0.0",timeout = 10000,interfaceClass = IDemoService.class,
 // loadbalance="roundrobin")
 public class DemoApiImpl implements DemoApi {
