@@ -2,6 +2,7 @@ package com.sing.dubbo.consumer.controller;
 
 import com.sing.dubbo.api.DemoApi;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
